@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{title}}</title>
+	<link rel="stylesheet" type="text/css" href="/css/editquestion.css">
+	<link rel="stylesheet" type="text/css" href="/css/nav.css">
+</head>
+<body>
+	 <nav>
+		  <a href="/">Problems</a>
+		  <a href="/leaderboard">Leaderboard</a>
+		  <a href="/admin">Add Question</a>
+		  <a href="/logout">Logout</a>
+	</nav> 
+
+	<div class="editquestion-page">
+		<div class="message">
+		{{message}}
+		</div>
+		<div class="form">
+			<form action="/edit/{{question.number}}" method="POST">
+				<div class="text">
+					<label for="title">Title of the Question:</label>
+					<input id="title" type="text" name="title" required value="{{question.title}}">
+				</div>
+				<div class = "text">
+					<label for="ques">Question:</label>
+					<textarea id="question" name="question" required>{{question.question}}</textarea>
+				</div>
+				<div class = "text">
+					<label for="answer">Answer:</label>
+					<textarea id="answer" name="answer" required >{{question.answer}}</textarea>
+				</div>
+				<div class="text"> 
+					<label for="points">Points:</label>
+					<input id="points" type="text" name="points" required value="{{question.points}}">
+				</div>
+				<br>
+				<button>Edit</button>
+  			</form>
+  		</div>
+	</div>	
+</body>
+</html>

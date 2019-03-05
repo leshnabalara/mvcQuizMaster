@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{title}}</title>
+	<link rel="stylesheet" type="text/css" href="/css/adminpanel.css">
+	<link rel="stylesheet" type="text/css" href="/css/nav.css">
+</head>
+<body>
+	 <nav>
+		  <a href="/">Problems</a>
+		  <a href="/leaderboard">Leaderboard</a>
+		  <a href="/admin" class="active">Add Question</a>
+		  <a href="/logout">Logout</a>
+	</nav> 
+
+	<div class="admin-page">
+		<div class="message">
+		{{message}}
+		</div>
+		<div class="form">
+			<form action="/admin" method="POST">
+				<div class="text">
+					<label for="title">Give a Title to the Question:</label>
+					<input id="title" type="text" name="title" required>
+				</div>
+				<div class = "text">
+					<label for="ques">Add question:</label>
+					<textarea id="question" name="question" placeholder="enter question" required></textarea>
+				</div>
+				<div class = "text">
+					<label for="answer">Answer:</label>
+					<textarea id="answer" name="answer" placeholder="enter answer" required></textarea>
+				</div>
+				<div class="text"> 
+					<label for="points">Points:</label>
+					<input id="points" type="text" name="points" required>
+				</div>
+				<br>
+				<button>Submit</button>
+  			</form>
+  		</div>
+	</div>	
+</body>
+</html>

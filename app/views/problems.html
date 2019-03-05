@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>{{ title }}</title>
+<link rel="stylesheet" type="text/css" href="/css/problems.css">
+<link rel="stylesheet" type="text/css" href="/css/nav.css">
+</head>
+<body>
+	 <nav>
+		  <a href="/" class="active">Problems</a>
+		  <a href="/leaderboard">Leaderboard</a>
+		  {% if is_admin == 1 %}
+		  <a href="/admin">Add Question</a>
+		  {% else %}
+		  <a href="/profile">Profile</a>
+		  {% endif %}
+		  {% if loggedin == true %}
+		  <a href="/logout">Logout</a>
+		  {% else %}
+		  <a href="/login">Login</a>
+		  {% endif %}
+	</nav> 
+
+	<div class="problems-page">
+		 <table >
+			  <tr>
+			    <th>No.</th>
+			    <th>Title</th>
+			    <th>Points</th>
+			    <th>Solved by</th>
+			  </tr>
+			  {% for problem in problemlist %}
+			  <tr>
+    			<td>{{ problem.number}}</td>
+    			<td><a href="/problem/{{problem.number}}">{{ problem.title }}</a></td>
+    			<td>{{ problem.points }}</td>
+    			<td>{{ problem.no_of_users }}</td>
+    		  </tr>
+			  {% endfor %}
+		</table> 
+
+	</div>
+	{{ error }}
+</body>
+</html>

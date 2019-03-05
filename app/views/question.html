@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{title}}</title>
+	<link rel="stylesheet" type="text/css" href="/css/question.css">
+	<link rel="stylesheet" type="text/css" href="/css/nav.css">
+
+</head>
+<body>
+	 <nav>
+		  <a href="/">Problems</a>
+		  <a href="/leaderboard">Leaderboard</a>
+		  <a href="/profile">Profile</a>
+		  {% if loggedin == true %}
+		  <a href="/logout">Logout</a>
+		  {% else %}
+		  <a href="/login">Login</a>
+		  {% endif %}
+	</nav> 
+
+	<div class="question-page">
+		<div class="problem">
+				<div class="title">
+					<h2>{{question.title}}</h2>
+				</div>
+				<div class = "number">
+					<h3  id="no">Problem {{question.number}}</h3>
+				</div>
+				<div class = "number">
+					<h3>Points : {{question.points}}</h3>
+				</div>
+				<div class = "question">
+					<h3>{{question.question}}</h3>
+				</div>
+				<div class="form">
+					<div class="text"> 
+						<label for="answer">Answer:</label>
+						<input id="answer" type="text" name="answer" required>
+					</div>
+					<button id="submit">Submit</button>
+  				</div>
+  		</div>
+  		<div id="response">
+  		</div>
+	</div>
+	<script type="text/javascript" src="/js/question.js" ></script>
+</body>
+</html>

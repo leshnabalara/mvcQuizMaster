@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{title}}</title>
+	<link rel="stylesheet" type="text/css" href="/css/profile.css">
+	<link rel="stylesheet" type="text/css" href="/css/nav.css">
+
+</head>
+<body>
+	 <nav>
+		  <a href="/">Problems</a>
+		  <a href="/leaderboard">Leaderboard</a>
+		  <a href="/profile" class="active">Profile</a>
+		  {% if loggedin == true %}
+		  <a href="/logout">Logout</a>
+		  {% else %}
+		  <a href="/login">Login</a>
+		  {% endif %}
+	</nav> 
+
+	<div class="profile-page">
+		<div class="problem">
+				<div class="title">
+					<h2>{{user.username}}</h2>
+				</div>
+				<div class = "number">
+					<h3>Enrollment number {{user.enrollment}}</h3>
+				</div>
+				<div class = "number">
+					<h3  id="no">Score {{user.score}}</h3>
+				</div>
+  		</div>
+
+	</div> 
+</body>
+</html>

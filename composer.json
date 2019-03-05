@@ -1,0 +1,16 @@
+{
+    "name":"Quizmaster",
+    "description":"Quiz taking app",
+    "require":{
+        "torophp/torophp":    "dev-master",
+        "twig/twig":"2.0"
+    },
+    "autoload":{
+        "psr-4":{
+            "Controllers\\":"app/controllers",
+            "Models\\":"app/models",
+            "Utils\\":"utils"
+        }
+    }    
+}
+ 

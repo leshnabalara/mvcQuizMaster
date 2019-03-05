@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{ title }}</title>
+	<link rel="stylesheet" type="text/css" href="/css/login.css">
+</head>
+<body>
+	<div class="login-page">
+		<div class="form">
+
+			{% if newuser == true %}
+    			<form class="register-form" action="/signup" method="post">
+    		{% else %}
+    			<form class="register-form" action="/signup" method="post" style="display: none;">
+			{% endif %}
+					<input type="text" name="username" placeholder="username" autocomplete="off" autofocus>
+					<input type="password" name="password" placeholder="password" autocomplete="off">
+					<input type="text" name="enrollment" placeholder="enrollment number" autocomplete="off">
+					<button type="submit">Create</button>
+
+					<p class="message">Already Registered? <a href="#">Login</a></p>
+			</form>
+
+
+			{% if newuser == true %}
+    			<form class="login-form" action="/login" method="post" style="display: none;">
+    		{% else %}
+    			<form class="login-form" action="/login" method="post">
+			{% endif %}		
+					<input type="text" name="enrollment" placeholder="enrollment number" autocomplete="off" autofocus>
+					<input type="password" name="password" placeholder="password" autocomplete="off">
+					<button type="submit">login</button>
+
+					<p class="message">Not Registered? <a href="#">Register</a></p>
+					<p class="error">{{error}}</p>
+			</form>
+		</div>
+		
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript">
+		$('.message a').click(function(){
+			$('form').animate({height:"toggle",opacity:"toggle"},"slow");
+		});
+	</script>
+
+</body>
+</html>
