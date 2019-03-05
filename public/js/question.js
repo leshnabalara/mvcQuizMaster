@@ -33,7 +33,7 @@ var button=document.getElementById('submit');
               if (httpRequest.readyState === XMLHttpRequest.DONE) 
               {
                   if (httpRequest.status === 200)
-                   {    var response = JSON.parse(httpRequest.responseText);
+                    {    var response = JSON.parse(httpRequest.responseText);
                        
                        
                         if(response.answer=="login"){

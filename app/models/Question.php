@@ -38,17 +38,16 @@
 			$solved=$db->prepare("SELECT * FROM answer WHERE enrollment=:enrollment AND question_number=:number");
 			$solved->execute(array(
 				"enrollment" => $_SESSION["enrollment"],
-				"number" => $id
-				));
+				"number" => $id));
 
 			$ques = $result->fetch(\PDO::FETCH_ASSOC);
 			$user = $users->fetch(\PDO::FETCH_ASSOC);
 
 			$current_score=$user["score"];
 			$number_of_solver=$ques["no_of_users"];
+			$rows=$solved->fetchAll();
 
-
-			if($ques["answer"]==$answer && $solved->num_rows==0)
+			if($ques["answer"]==$answer && count($rows)==0)
 			{	
 				$current_score=$current_score+$ques["points"];
 				$number_of_solver=$number_of_solver+1;
@@ -77,7 +76,7 @@
 				return true;
 			}
 
-			elseif($ques["answer"]==$answer)
+			elseif($ques["answer"]===$answer)
 			{
 				return true;
 			}
