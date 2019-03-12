@@ -1,32 +1,32 @@
 <?php
     
-	namespace Controllers;	//collection of classes 
-	use Models\Users;
+    namespace Controllers;  //collection of classes 
+    use Models\Users;
 
     session_start();
 
-	class LoginController{
+    class LoginController{
 
-		protected $twig;
+        protected $twig;
 
-		public function __construct()
+        public function __construct()
         {
             $loader = new \Twig_Loader_Filesystem(__DIR__ . '/../views') ; //load twig enviornment
             $this->twig = new \Twig_Environment($loader) ;
         }
 
         public function get() {
-        	echo $this->twig->render("login.html",array(
-        		"title" => "Login",
+            echo $this->twig->render("login.html",array(
+                "title" => "Login",
                 "isNewUser" => false
             ));
 
         }
 
 
-        public function post(){	//post executed when post request submitted (handeled by toro)
-        	$enrollment= $_POST["enrollment"];
-        	$password= $_POST["password"];
+        public function post(){ //post executed when post request submitted (handeled by toro)
+            $enrollment= $_POST["enrollment"];
+            $password= $_POST["password"];
 
             if(isset($enrollment) &&
                isset($password) &&

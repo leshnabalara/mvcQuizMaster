@@ -1,15 +1,15 @@
 <?php
     
-	namespace Controllers;	//collection of classes 
-	use Models\Questions;
+    namespace Controllers;  //collection of classes 
+    use Models\Questions;
 
     session_start();
 
-	class ProblemController{
+    class ProblemController{
 
-		protected $twig;
+        protected $twig;
 
-		public function __construct()
+        public function __construct()
         {
             $loader = new \Twig_Loader_Filesystem(__DIR__ . '/../views') ; //load twig enviornment
             $this->twig = new \Twig_Environment($loader) ;

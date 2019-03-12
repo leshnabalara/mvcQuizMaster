@@ -1,14 +1,14 @@
 <?php
     
-	namespace Controllers;	//collection of classes 
+    namespace Controllers;  //collection of classes 
 
     session_start();
 
-	class LogoutController{
+    class LogoutController{
 
-		protected $twig;
+        protected $twig;
 
-		public function __construct()
+        public function __construct()
         {
             $loader = new \Twig_Loader_Filesystem(__DIR__ . '/../views') ; //load twig enviornment
             $this->twig = new \Twig_Environment($loader) ;
@@ -19,8 +19,8 @@
             session_unset();
             session_destroy();
 
-        	echo $this->twig->render("login.html",array(
-        		"title" => "Login",
+            echo $this->twig->render("login.html",array(
+                "title" => "Login",
                 "isNewUser" => false
             ));
 

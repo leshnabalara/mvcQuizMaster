@@ -1,83 +1,83 @@
 <?php
-	
-	namespace Models;
-	use Utils\Util;
+    
+    namespace Models;
+    use Utils\Util;
 
 
-	class Questions{
+    class Questions{
 
-		public static function AddQuestion($title,$question,$answer,$points){
-
-
-			$db= Util::getDB();//using static function
-			$no_of_users=0;
-
-			$entry= $db->prepare("INSERT INTO questions (title,question,answer,points,no_of_users) VALUES (:title,:question,:answer,:points,:no_of_users)"); //make skeleton of query to prevent sql injection
-
-			$result= $entry->execute(array(
-					 "title" => $title,
-					 "question" => $question,
-					 "answer" => $answer,
-					 "points" => $points,
-					 "no_of_users" => $no_of_users
-					 ));
-
-			return $result;
-		}
-
-		public static function EditQuestion($id,$title,$question,$answer,$points){
+        public static function AddQuestion($title,$question,$answer,$points){
 
 
-			$db= Util::getDB();//using static function
+            $db= Util::getDB();//using static function
+            $no_of_users=0;
 
-			$entry= $db->prepare("UPDATE questions SET 
-									title=:title,
-									question=:question,
-									answer=:answer,
-									points=:points
-									WHERE number=:number
-								"); //make skeleton of query to prevent sql injection
+            $entry= $db->prepare("INSERT INTO questions (title,question,answer,points,no_of_users) VALUES (:title,:question,:answer,:points,:no_of_users)"); //make skeleton of query to prevent sql injection
 
-			$result= $entry->execute(array(
-					 "number" => $id, 
-					 "title" => $title,
-					 "question" => $question,
-					 "answer" => $answer,
-					 "points" => $points,
-					 ));
+            $result= $entry->execute(array(
+                     "title" => $title,
+                     "question" => $question,
+                     "answer" => $answer,
+                     "points" => $points,
+                     "no_of_users" => $no_of_users
+                     ));
 
-			return $result;
-		}
+            return $result;
+        }
 
-		public static function ProblemList(){
+        public static function EditQuestion($id,$title,$question,$answer,$points){
 
 
-			$db= Util::getDB();//using static function
+            $db= Util::getDB();//using static function
 
-			$questions= $db->prepare("SELECT number,title,points,no_of_users FROM questions"); //make skeleton of query to prevent sql injection
+            $entry= $db->prepare("UPDATE questions SET 
+                                    title=:title,
+                                    question=:question,
+                                    answer=:answer,
+                                    points=:points
+                                    WHERE number=:number
+                                "); //make skeleton of query to prevent sql injection
 
-			$data= $questions->execute();
+            $result= $entry->execute(array(
+                     "number" => $id, 
+                     "title" => $title,
+                     "question" => $question,
+                     "answer" => $answer,
+                     "points" => $points,
+                     ));
 
-			$rows = $questions->fetchAll();
+            return $result;
+        }
 
-			return $rows;
-		}
+        public static function ProblemList(){
 
 
-		public static function GetQuestion($id){
+            $db= Util::getDB();//using static function
 
-			$db= Util::getDB();//using static function
+            $questions= $db->prepare("SELECT number,title,points,no_of_users FROM questions"); //make skeleton of query to prevent sql injection
 
-			$questions= $db->prepare("SELECT * FROM questions WHERE number=:number"); //make skeleton of query to prevent sql injection
+            $data= $questions->execute();
 
-			$data= $questions->execute(array(
-				"number" => $id
-			));
+            $rows = $questions->fetchAll();
 
-			$row = $questions->fetch(\PDO::FETCH_ASSOC);
+            return $rows;
+        }
 
-			return $row;
-		}
 
-	}	
+        public static function GetQuestion($id){
+
+            $db= Util::getDB();//using static function
+
+            $questions= $db->prepare("SELECT * FROM questions WHERE number=:number"); //make skeleton of query to prevent sql injection
+
+            $data= $questions->execute(array(
+                "number" => $id
+            ));
+
+            $row = $questions->fetch(\PDO::FETCH_ASSOC);
+
+            return $row;
+        }
+
+    }   
 ?>
