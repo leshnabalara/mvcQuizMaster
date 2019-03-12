@@ -18,7 +18,7 @@
         public function get() {
         	echo $this->twig->render("login.html",array(
         		"title" => "Login",
-                "newuser" => false
+                "isNewUser" => false
             ));
 
         }
