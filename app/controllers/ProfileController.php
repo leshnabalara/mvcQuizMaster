@@ -1,7 +1,7 @@
 <?php
     
 	namespace Controllers;	//collection of classes 
-	use Models\Profile;
+	use Models\Users;
 
     session_start();
 
@@ -19,7 +19,7 @@
         public function get(){
             if(isset($_SESSION["enrollment"]))
             {
-                $user=Profile::GetInfo();
+                $user=Users::GetInfo();
 
                 echo $this->twig->render("profile.html",array(
                     "title" => "Profile",

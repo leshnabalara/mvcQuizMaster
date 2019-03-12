@@ -1,7 +1,7 @@
 <?php
     
 	namespace Controllers;	//collection of classes 
-	use Models\Problems;
+	use Models\Questions;
 
     session_start();
 
@@ -17,7 +17,7 @@
 
 
         public function get(){
-            $rows=Problems::ProblemList();
+            $rows=Questions::ProblemList();
 
             echo $this->twig->render("problems.html",array(
                 "title" => "Problems",

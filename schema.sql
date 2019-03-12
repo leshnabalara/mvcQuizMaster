@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 04, 2019 at 05:32 AM
+-- Generation Time: Mar 13, 2019 at 12:12 AM
 -- Server version: 5.7.25-0ubuntu0.18.04.2
 -- PHP Version: 7.2.15-0ubuntu0.18.04.1
 
@@ -75,13 +75,22 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`username`, `password`, `enrollment`, `score`, `is_admin`) VALUES
+('aniket', '1eda14dc9519d1fdf747e3ebffdd6df5984dee57b4e97adab76d4936a8282b48', 18112008, 0, 0),
+('shubham', '10f6d3ce9d854d1ebfc1ca7d1981fafc122a9970093382f2c5c72cfa6ab47572', 18113131, 0, 0),
 ('diya', 'da9660c38bcd7f409ec94a6c749af6c4cb1af22699071fc2d32a2d99acaeaf66', 18114021, 0, 0),
 ('karanpreet', '74d70f0e4a15453665415ac1040f4f383f9e6220292cb4b5a1042f1ead6df2ea', 18114036, 0, 0),
-('leshna', '78daad285fb97cadabf08dd417dad86f5c2def3b76b02fb32165546cb8eeacfc', 18114044, 0, 1);
+('leshna', '78daad285fb97cadabf08dd417dad86f5c2def3b76b02fb32165546cb8eeacfc', 18114044, 0, 1),
+('shubhang', '32c2a15d182a4bb1b20fe681b367c14ad92264dfec4fef8f7d5f7b1ab3514b5a', 18114074, 0, 0);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `answer`
+--
+ALTER TABLE `answer`
+  ADD KEY `question_number` (`question_number`);
 
 --
 -- Indexes for table `questions`
@@ -104,6 +113,16 @@ ALTER TABLE `users`
 --
 ALTER TABLE `questions`
   MODIFY `number` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `answer`
+--
+ALTER TABLE `answer`
+  ADD CONSTRAINT `answer_ibfk_1` FOREIGN KEY (`question_number`) REFERENCES `questions` (`number`);
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

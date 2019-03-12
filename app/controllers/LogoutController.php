@@ -17,7 +17,7 @@
         public function get() {
 
             session_unset();
-            session_decode();
+            session_destroy();
 
         	echo $this->twig->render("login.html",array(
         		"title" => "Login",

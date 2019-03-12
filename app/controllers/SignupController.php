@@ -1,7 +1,7 @@
 <?php
     
 	namespace Controllers;	//collection of classes 
-	use Models\Signup;
+	use Models\Users;
 
     session_start();
 
@@ -29,12 +29,24 @@
             $enrollment=$_POST["enrollment"];
             // $score=0;
 
-        	Signup::AddUser($username,$password,$enrollment);
-            
-            $_SESSION["enrollment"] = $enrollment;
-            $_SESSION["is_admin"]=0;
+            if(isset($username) &&
+               isset($password) &&
+               isset($enrollment)){
 
-                header("Location: /");
+            	Users::AddUser($username,$password,$enrollment);
+                
+                $_SESSION["enrollment"] = $enrollment;
+                $_SESSION["is_admin"]=0;
+
+                    header("Location: /");
+            }
+
+            else{
+
+                get();
+
+            }
+
 
         }
     }

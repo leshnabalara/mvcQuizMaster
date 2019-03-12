@@ -2,6 +2,7 @@
 
 	namespace Controllers;	//collection of classes 
 	use Models\Question;
+	use Models\Questions;
 
 	session_start();
 
@@ -19,7 +20,7 @@
 
 	    	if(isset($_SESSION["enrollment"]) && $_SESSION["is_admin"]>0)
             {
-            	$question=Question::GetQuestion($id);
+            	$question=Questions::GetQuestion($id);
 
             	echo $this->twig->render("editquestion.html",array(
 	                "title" => "Question ".$id,
@@ -29,7 +30,7 @@
             else
             {
                 
-	        	$question=Question::GetQuestion($id);
+	        	$question=Questions::GetQuestion($id);
 
             	echo $this->twig->render("question.html",array(
 	                "title" => "Question ".$id,

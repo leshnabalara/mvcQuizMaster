@@ -1,7 +1,7 @@
 <?php
     
 	namespace Controllers;	//collection of classes 
-	use Models\Login;
+	use Models\Users;
 
     session_start();
 
@@ -28,9 +28,11 @@
         	$enrollment= $_POST["enrollment"];
         	$password= $_POST["password"];
 
-            if(Login::ValidateUser($enrollment,$password))
+            if(isset($enrollment) &&
+               isset($password) &&
+               Users::ValidateUser($enrollment,$password))
             {   $_SESSION["enrollment"] = $enrollment;
-                $_SESSION["is_admin"] = Login::Admin($enrollment);
+                $_SESSION["is_admin"] = Users::Admin($enrollment);
                 header("Location: /");
             }
 

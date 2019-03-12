@@ -1,7 +1,7 @@
 <?php
     
 	namespace Controllers;	//collection of classes 
-	use Models\EditQuestion;
+	use Models\Questions;
 
     session_start();
 
@@ -25,8 +25,17 @@
                 $points=$_POST["points"];
                 // $no_of_users=0;
 
-                $result=EditQuestion::EditQuestion($id,$title,$question,$answer,$points);
-                
+                if(isset($title) && 
+                   isset($question) &&
+                   isset($answer) && 
+                   isset($points)){
+                    $result=Questions::EditQuestion($id,$title,$question,$answer,$points);
+                }
+
+                else{
+                    $result=false;
+                }
+
                 if($result)
                 {
                     echo $this->twig->render("editquestion.html",array(

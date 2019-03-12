@@ -1,7 +1,7 @@
 <?php
     
 	namespace Controllers;	//collection of classes 
-	use Models\Leaderboard;
+	use Models\Users;
 
     session_start();
 
@@ -17,7 +17,7 @@
 
 
         public function get(){
-            $rows=Leaderboard::UserList();
+            $rows=Users::UserList();
             // $is_admin=$_SESSION["is_admin"];
 
             echo $this->twig->render("leaderboard.html",array(

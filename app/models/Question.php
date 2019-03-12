@@ -6,20 +6,6 @@
 
 	class Question{
 
-		public static function GetQuestion($id){
-
-			$db= Util::getDB();//using static function
-
-			$questions= $db->prepare("SELECT * FROM questions WHERE number=:number"); //make skeleton of query to prevent sql injection
-
-			$data= $questions->execute(array(
-				"number" => $id
-			));
-
-			$row = $questions->fetch(\PDO::FETCH_ASSOC);
-
-			return $row;
-		}
 
 		public static function CheckQuestion($id,$answer){
 
